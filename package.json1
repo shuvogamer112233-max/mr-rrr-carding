@@ -1,0 +1,79 @@
+const express = require("express");
+const app = express();
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
+app.get("/", (req, res) => {
+  res.send(`
+  <!DOCTYPE html>
+  <html lang="bn">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MR.RRR CARDING</title>
+    <style>
+      body {
+        background:#090914;
+        color:white;
+        font-family:Arial,sans-serif;
+        text-align:center;
+        padding:20px;
+      }
+      h1 {color:#b56cff;}
+      .card {
+        background:#19192b;
+        padding:20px;
+        margin:15px auto;
+        border-radius:15px;
+        max-width:350px;
+      }
+      input,select,button {
+        width:90%;
+        padding:13px;
+        margin:8px;
+        border-radius:8px;
+        border:0;
+      }
+      button {
+        background:#9b4dff;
+        color:white;
+        font-weight:bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>MR.RRR CARDING</h1>
+    <h3>Free Fire Diamond Store</h3>
+    <div class="card">
+      <h2>Diamond Order</h2>
+      <form method="POST" action="/order">
+        <input name="uid" placeholder="Free Fire Player UID" required>
+        <select name="package">
+          <option>100 Diamonds</option>
+          <option>210 Diamonds</option>
+          <option>520 Diamonds</option>
+          <option>1080 Diamonds</option>
+        </select>
+        <select name="payment">
+          <option>bKash<01880171222>
+          <option>Nagad</option>
+        </select>
+        <button type="submit">Place Order</button>
+      </form>
+      <p>পেমেন্ট ও ডেলিভারির নিয়ম জানতে যোগাযোগ করুন।</p>
+    </div>
+    <p>MR.RRR CARDING © 2026</p>
+  </body>
+  </html>
+  `);
+});
+
+app.post("/order", (req, res) => {
+  res.send("আপনার অর্ডার অনুরোধ পাওয়া গেছে। পেমেন্ট এখনো চালু হয়নি।");
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log("MR.RRR CARDING is running");
+});
